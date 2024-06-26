@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Serie;
+use App\Http\Requests\SeriesFormRequest;
 use Illuminate\Http\Request;
 
 class SeriesController extends Controller
@@ -20,12 +21,8 @@ class SeriesController extends Controller
         return view('series.create');
     }
 
-    public function store(Request $request)
+    public function store(SeriesFormRequest $request)
     {
-        $request->validate([
-            'nome' => ['required', 'min:3']       
-        ]);
-
         $serie = Serie::create($request->all());
 
         return to_route('series.index')->with('mensagem.sucesso', "Série '{$serie->nome}' adicionada com sucesso");
@@ -43,7 +40,7 @@ class SeriesController extends Controller
         return view('series.edit')->with('serie', $series);
     }
 
-    public function update(Serie $series, Request $request)
+    public function update(Serie $series, SeriesFormRequest $request)
     {
         $series->fill($request->all());
         $series->save();
