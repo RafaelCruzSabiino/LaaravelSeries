@@ -3,15 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Serie;
-use App\Models\Season;
-use App\Models\Episode;
-use App\Repositories\SeriesRepository;
+use App\Repositories\ISeriesRepository;
 use App\Http\Requests\SeriesFormRequest;
 use Illuminate\Http\Request;
 
 class SeriesController extends Controller
 {
-    public function __construct(private SeriesRepository $repository){}
+    public function __construct(private ISeriesRepository $repository){}
     
     public function index(Request $request)
     {

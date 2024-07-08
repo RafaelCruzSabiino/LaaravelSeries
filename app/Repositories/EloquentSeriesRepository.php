@@ -8,9 +8,9 @@ use App\Models\Episode;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\SeriesFormRequest;
 
-class SeriesRepository
+class EloquentSeriesRepository implements ISeriesRepository
 {
-    public function add(SeriesFormRequest $request)
+    public function add(SeriesFormRequest $request) : Serie
     {
         // DB::beginTransaction();
 
