@@ -39,7 +39,7 @@ class SeriesController extends Controller
         return to_route('series.index')->with('mensagem.sucesso', "Série '{$series->nome}' removida com sucesso");
     }
 
-    public function eidt(Serie $series)
+    public function edit(Serie $series)
     {
         return view('series.edit')->with('serie', $series);
     }
