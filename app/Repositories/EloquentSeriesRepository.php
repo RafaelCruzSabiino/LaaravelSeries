@@ -26,7 +26,10 @@ class EloquentSeriesRepository implements ISeriesRepository
 
         return DB::transaction(function () use ($request)
         {
-            $serie    = Serie::create($request->all());
+            $serie    = Serie::create([
+                'nome' => $request->nome,
+                'cover' => $request->coverPath
+            ]);
             $seasons  = [];
             $episodes = [];
     
